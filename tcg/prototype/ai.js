@@ -9,6 +9,7 @@
 
   // Heuristic policy: spend early tempo, then choose attacks by their contest impact.
   function takeTurn(st, pi) {
+    if (st.active !== pi || st.phase !== "main" || st.pendingAttack || st.winner !== null) return;
     const p = st.players[pi], opp = st.players[1 - pi];
     let acted = true;
     while (acted && st.winner === null) {
@@ -53,7 +54,7 @@
       }
       if (!p.powerUsed && E().totalMana(p) >= 2) {
         const t = p.hero.id === "thorn" ? p.board[0] : (opp.board[0] || p.board[0]);
-        if (t) { E().heroPower(st, pi, t); acted = true; }
+        if (t && E().heroPower(st, pi, t)) acted = true;
       }
     }
   }
@@ -99,6 +100,7 @@
 
   function pickTarget(st, pi, card) {
     const opp = st.players[1 - pi];
+    if (card.needsTarget && card.targetSide === "self") return st.players[pi].board[0] || null;
     if (card.type === "spell") {
       const dmg = ["sucker-punch", "shank", "last-breath", "ring-out", "corner-cut"].includes(card.id);
       if (dmg && opp.board.length) {
@@ -114,7 +116,7 @@
   // Clash window: defender decides whether to spend a clash spell.
   function clashResponse(st, defPi, attacker, defender) {
     const p = st.players[defPi];
-    const idx = p.hand.findIndex((c) => c.clashOnly && E().totalMana(p) >= c.cost);
+    const idx = p.hand.findIndex((c) => c.clashOnly && E().totalMana(p) >= c.cost && (c.id !== "cage-door" || defender !== "hero"));
     if (idx < 0) return null;
     const c = p.hand[idx];
     // heuristic: feint only vs lethal/big hits; cheap clash vs efficient trades
