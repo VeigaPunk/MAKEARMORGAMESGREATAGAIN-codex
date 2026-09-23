@@ -21,5 +21,5 @@ for(const game of games){
  html=html.replace('</head>','<link rel="icon" href="../favicon.svg"><script defer src="../return.js"></script></head>');
  await writeFile(file,html);
 }
-await writeFile(path.join(out,'release.json'),JSON.stringify({version:'1.0.0',distribution:'private',games},null,2)+'\n');
+await writeFile(path.join(out,'release.json'),JSON.stringify({version:'1.0.0',distribution:'static',edition:'codex',games},null,2)+'\n');
 console.log(`\nBuilt ${games.length} games into dist/. Start with npm start.`);

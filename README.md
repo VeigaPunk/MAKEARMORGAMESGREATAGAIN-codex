@@ -1,10 +1,10 @@
-# Armor Arcade
+# Armor Arcade — Codex edition
 
 Eight playable browser games, brought forward from the checkpoint into a single remake collection. Authored canvas/SVG art, synthesized sound, local saves, desktop controls, touch interfaces, and reproducible production builds.
 
 ## Play
 
-[Open Armor Arcade on ChatGPT Sites](https://armor-arcade-veigapunk.jpveiga.chatgpt.site) (private access).
+[Open the Codex edition](https://ds4cc.com/magga/codex/) · [Compare editions](https://ds4cc.com/magga/) · [ChatGPT Site](https://armor-arcade-veigapunk.jpveiga.chatgpt.site) (private access).
 
 To run the same collection locally:
 
@@ -60,6 +60,7 @@ See [release evidence and scope](verification/RELEASE.md). Browser report: `veri
 ## Source layout
 
 - `arcade/`: collection page, game covers, shared return navigation.
+- `model-collection/`: the static model/CLI comparison landing page for `/magga/`.
 - `tooling/`: static build, local server, complete browser gate.
 - `MAGA-everything/02-code/armor-games/`: six Vite/TypeScript apps and shared engines.
 - `hardest/`: dependency-free obstacle game, levels and completability verifier.
@@ -71,8 +72,12 @@ See [release evidence and scope](verification/RELEASE.md). Browser report: `veri
 
 The [session prompts](docs/session-prompts-2026-09-22.md) preserve the user's requests verbatim, including repeated prompts and the hosting-path correction.
 
-ChatGPT Sites serves the static `dist/` directory. Its project identity and static configuration live in [.openai/hosting.json](.openai/hosting.json). Publishing uses the Sites workflow to push the source commit, package its build output, and deploy that saved version with private access. The games themselves need no server runtime. For another static host, copy the contents of `dist/` to its document directory; all game and asset URLs are relative. The requested fallback location is `https://ds4cc.com/magga/`.
+This edition has its own repository: [VeigaPunk/MAKEARMORGAMESGREATAGAIN-codex](https://github.com/VeigaPunk/MAKEARMORGAMESGREATAGAIN-codex). The original repository is retained as `upstream` for reference, with local pushes disabled. The release originally pushed there was reverted in `4d100bb`; its file tree again matches checkpoint `322a5e4`.
+
+The hosting layout is `/magga/` for the model/CLI collection and `/magga/codex/` for this edition. Copy `model-collection/` to the former and the contents of `dist/` to the latter. All game and asset URLs are relative. Saves beneath `/magga/<edition>/` are isolated from sibling editions on the same hosting origin.
+
+ChatGPT Sites also serves `dist/`. Its project identity and static configuration live in [.openai/hosting.json](.openai/hosting.json). Publishing uses the Sites workflow to push the source commit, package its build output, and deploy that saved version with private access. The games themselves need no server runtime.
 
 ## Distribution scope
 
-The playable ChatGPT Site uses **private access**; the existing GitHub repository retains its current visibility. The games are authored remakes and an original card game; the release does not claim identical original assets, measured frame-for-frame fidelity, or the complete content catalogs of the commercial originals. Historical prototype and checkpoint reports are preserved; the release report records the current result.
+The ChatGPT Site uses **private access**. The Codex repository and the requested comparison collection on ds4cc.com are public. The games are authored remakes and an original card game; the release does not claim identical original assets, measured frame-for-frame fidelity, or the complete content catalogs of the commercial originals. Historical prototype and checkpoint reports are preserved; the release report records the current result.

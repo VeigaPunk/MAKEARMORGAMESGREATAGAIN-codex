@@ -1,4 +1,4 @@
-ARMOR ARCADE — PRIVATE RELEASE 1.0
+ARMOR ARCADE — CODEX EDITION 1.0
 
 Eight self-contained browser games. No account, API key or CDN is needed.
 
@@ -14,9 +14,8 @@ the development repository.
 Progress is stored in the browser. Use the same hostname and port each time.
 The eight game folders can also be hosted beneath an HTTP subdirectory.
 
-This is a private remake collection. The repository's existing per-title
-rights-clearance requirement applies before public redistribution. Original
-commercial assets and exact frame-for-frame historical parity are not claimed.
+Original commercial assets and exact frame-for-frame historical parity
+are not claimed.
 
 The source repository contains build scripts, tests, design references and
 verification/RELEASE.md. Chromium and Firefox were verified on Linux; touch

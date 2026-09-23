@@ -9,4 +9,4 @@ const result=spawnSync('tar',['--sort=name','--mtime=@0','--owner=0','--group=0'
 if(result.status!==0)process.exit(result.status??1);
 const digest=createHash('sha256').update(await readFile(`releases/${archive}`)).digest('hex');
 await writeFile(`releases/${archive}.sha256`,`${digest}  ${archive}\n`);
-console.log(`Private release: releases/${archive}\nSHA-256: ${digest}`);
+console.log(`Codex release: releases/${archive}\nSHA-256: ${digest}`);

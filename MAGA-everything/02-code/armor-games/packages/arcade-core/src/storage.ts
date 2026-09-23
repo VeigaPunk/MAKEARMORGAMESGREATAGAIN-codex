@@ -3,7 +3,14 @@
  * Fails soft (private mode etc.) so games never crash on storage errors.
  */
 
-const PREFIX = 'maga:';
+// A deployment can share an origin with other model/CLI editions. Only the
+// mount before a known game folder is part of its namespace; root/Vite and
+// file:// development retain the original keys. Folder and index.html URLs
+// deliberately resolve to the same mount.
+const deploymentBase = typeof location !== 'undefined' && /^https?:$/.test(location.protocol)
+  ? location.pathname.match(/^(.*)\/(?:boxhead|impossible|burger-tycoon|chicken-invaders(?:-original)?|swords-and-sandals|hardest)(?:\/(?:index\.html)?)?$/)?.[1] ?? ''
+  : '';
+const PREFIX = deploymentBase ? `maga:${deploymentBase}:` : 'maga:';
 
 export function save<T>(game: string, key: string, value: T): void {
   try {

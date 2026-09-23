@@ -43,3 +43,21 @@ serve them as a chatgpt website, push this repo with the prompts i inserted on t
 ```text
 actually, ds4cc.com/magga not ds4cc.com/arcade
 ```
+
+## 8
+
+```text
+you should ship against this dir; we will have a fork for each frontier model and cli
+```
+
+## 9
+
+```text
+revert the git commit against the origin repo
+```
+
+## 10 — User response to the hosting-directory clarification
+
+```text
+Use /magga/ as a collection, with this build at /magga/codex/
+```

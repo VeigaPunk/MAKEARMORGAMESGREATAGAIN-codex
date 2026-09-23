@@ -4,7 +4,11 @@
 'use strict';
 const E = globalThis.HardestEngine;
 const STAGE_W = 960, STAGE_H = 576;
-const SAVE_KEY = 'hardest.save.v1';
+// Isolate hosted editions while preserving root and file:// development saves.
+const deploymentBase = typeof location !== 'undefined' && /^https?:$/.test(location.protocol)
+  ? location.pathname.match(/^(.*)\/hardest(?:\/(?:index\.html)?)?$/)?.[1] ?? ''
+  : '';
+const SAVE_KEY = deploymentBase ? `maga:${deploymentBase}:hardest.save.v1` : 'hardest.save.v1';
 const MENU_COLS = 16;
 
 const cv = document.getElementById('c');

@@ -1,4 +1,4 @@
-# Private release 1.0 — 2026-09-22
+# Codex release 1.0 — 2026-09-22
 
 This release continues checkpoint `322a5e4` and replaces the launch experience with an eight-game collection built into `dist/`. The original checkpoint reports remain historical evidence. This report describes the current shipped scope, rather than repeating the earlier prototype completion claims.
 
@@ -25,7 +25,7 @@ npx playwright install chromium firefox
 npm run verify
 ```
 
-The gate performs workspace TypeScript checks, **35 simulation/regression tests**, **114 level proofs**, all six production builds, **44 production-browser checks across Chromium and Firefox**, then the deeper Boxhead/shooter/Hardest/arena/card browser suites. The browser checks use isolated storage and collect page failures. Full-input completion proofs are distinct from the separate fault-injection/collision unit tests; injected wins do not count as completion evidence.
+The gate performs workspace TypeScript checks, **37 simulation/regression tests**, **114 level proofs**, all six production builds, **46 production-browser checks across Chromium and Firefox**, then the deeper Boxhead/shooter/Hardest/arena/card browser suites. The browser checks use isolated storage and collect page failures. Full-input completion proofs are distinct from the separate fault-injection/collision unit tests; injected wins do not count as completion evidence.
 
 The production browser matrix covers all eight game pages at desktop and phone widths, asset loading, navigation, the full three-course runner campaign, management loss/reload/retry, independent two-player input and pause/focus behavior. Deeper suites use Chromium touch emulation and verify the 12-bout tournament and card-game matches. The GitHub workflow runs this same gate; it has been added locally and is not claimed to have run remotely.
 
@@ -47,6 +47,12 @@ Archive: `releases/armor-arcade-1.0.0.tar.gz` (about 2.6 MB), with launch instru
 - Burger small mobile controls, missing run recovery, lost keyboard shortcuts after button clicks, and scene effects retaining the previous company's clock.
 - Clashbound dead attackers resolving after Clash, invalid targeting/turn actions, post-win spending, AI callbacks surviving a new game, and unreadable mobile hand/board layouts.
 
+## Publication follow-up
+
+The model/CLI comparison collection lives at `/magga/`, with this edition at `/magga/codex/`. The Codex source has a separate `MAKEARMORGAMESGREATAGAIN-codex` repository. The original repository's release commit was reverted in `4d100bb`, and its resulting tree was verified identical to checkpoint `322a5e4`.
+
+Two added storage regressions prove that all six shared-engine games, shared sound settings, and Hardest's save data remain isolated between sibling deployment paths. Existing root/development keys remain compatible. Workspace typechecks, all 37 rule/regression cases, and both Chromium/Firefox nested-path browser tests passed after this change. Each browser follows all eight games' assets and return links beneath `/magga/codex/`.
+
 ## Evidence and limits
 
 - Collection screenshots: `verification/evidence/release/`.
@@ -54,4 +60,4 @@ Archive: `releases/armor-arcade-1.0.0.tar.gz` (about 2.6 MB), with launch instru
 - Playwright HTML report: `verification/browser-report/index.html` after verification.
 - Per-game deep evidence: `apps/*/proofs/release/`, `apps/swords-and-sandals/tests/evidence/`, `tcg/prototype/tests/evidence/`, `hardest/browser-check.mjs` and `packages/shmup-core/tests/VERIFICATION.md`.
 
-The production gate is automated on this Linux environment. Touch is emulated; physical Android/iOS devices and Safari are not verified. The remakes use authored assets, layouts, music and balanced rules informed by the repository references. Exact original physics, original licensed artwork/audio, and the complete commercial game catalogs are not claimed. The user subsequently requested a GitHub push and ChatGPT Sites hosting; the [session artifact](../docs/session-prompts-2026-09-22.md) records that authorization. The playable Site retains private access.
+The production gate is automated on this Linux environment. Touch is emulated; physical Android/iOS devices and Safari are not verified. The remakes use authored assets, layouts, music and balanced rules informed by the repository references. Exact original physics, original licensed artwork/audio, and the complete commercial game catalogs are not claimed. The [session artifact](../docs/session-prompts-2026-09-22.md) records the publication request and its corrections. The ChatGPT Site retains private access; the requested ds4cc.com collection and separate Codex repository are public.

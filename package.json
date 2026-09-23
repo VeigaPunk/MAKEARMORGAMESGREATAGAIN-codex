@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Eight locally playable arcade games and a reproducible private release",
+  "description": "Codex edition: eight browser games and a reproducible static release",
   "scripts": {
     "setup": "npm ci && npm --prefix MAGA-everything/02-code/armor-games ci",
     "build": "node tooling/build.mjs",
