@@ -11,7 +11,9 @@ for(const width of [1280,390])for(const game of games)test(`${game} production a
  await expect(page.getByRole('link',{name:'Return to the arcade'})).toBeVisible();
 });
 test('Impossible three-course campaign with keyboard presses, unlocks, save, retry',async({page})=>{
- test.setTimeout(180_000);
+ // The full 107-second campaign renders every animation frame. Hosted CI's
+ // software Chromium needs more wall time than the locally accelerated run.
+ test.setTimeout(360_000);
  await page.clock.install();await page.goto('/impossible/?debug');await page.getByRole('button',{name:'Start run',exact:true}).click();
  await page.evaluate(()=>{
   const marks=[1330,1790,2300,2880,3290,3840,4280,4920,5490,6240,6750,7000,7250,7750,8400,8990,9300];let next=0,release=false;
